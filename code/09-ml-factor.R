@@ -1,12 +1,12 @@
 # 《量化投资的统计学导论》第 9 章 机器学习与多因子模型 —— 示例代码
-# 依赖: data/finwr.R（mlpanel）、randomForest、xgboost、MASS
+# 依赖: data/load_datasets.R（mlpanel）、randomForest、xgboost、MASS
 # 运行: cd an-introduction-to-statistics-for-quantitative-investing
 #       Rscript code/09-ml-factor.R
 #
 # 注：随机森林与 XGBoost 训练较慢（本机 8 GB 内存约 5-10 分钟），
 #     代码中已下调树的数量与抽样规模以适配普通笔记本。
 
-source("data/finwr.R")
+source("data/load_datasets.R")
 suppressMessages({
   library(randomForest)
   library(xgboost)

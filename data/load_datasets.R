@@ -1,22 +1,21 @@
-# finwr —— 《量化投资的统计学导论》数据集载入脚本
-# 用法（在 R 会话中）: source("an-introduction-to-statistics-for-quantitative-investing/data/finwr.R")
+# load_datasets —— 《量化投资的统计学导论》数据集载入脚本
+# 用法（在 R 会话中）: source("an-introduction-to-statistics-for-quantitative-investing/data/load_datasets.R")
 #
-# 数据来源: xquant-db 真实行情与财务指标，由 script/02_build_datasets.R 与
-#           script/05_build_mlpanel.R 固化快照。不含模拟数据。
+# 数据: data/csv/ 下的书稿数据集快照，不含模拟数据。
 # 列名保留原始证券代码（如 510300.SS），故 check.names = FALSE。
 # 大数据集（mlpanel、mlfin）以 .csv.gz 存储，载入时自动识别。
 
-finwr_dir <- function() {
+datasets_dir <- function() {
   cand <- c("an-introduction-to-statistics-for-quantitative-investing/data/csv",
             "data/csv", "../data/csv")
   hit <- cand[dir.exists(cand)]
-  if (!length(hit)) stop("找不到 data/csv，请先运行 script/02_build_datasets.R")
+  if (!length(hit)) stop("找不到 data/csv")
   hit[1]
 }
 
 # 读单个数据集：优先 .csv，其次 .csv.gz
-finwr_load <- function(name, dir = NULL) {
-  if (is.null(dir)) dir <- finwr_dir()
+load_dataset <- function(name, dir = NULL) {
+  if (is.null(dir)) dir <- datasets_dir()
   f <- file.path(dir, paste0(name, ".csv"))
   if (!file.exists(f)) {
     fz <- paste0(f, ".gz")
@@ -26,8 +25,8 @@ finwr_load <- function(name, dir = NULL) {
   utils::read.csv(f, stringsAsFactors = FALSE, check.names = FALSE)
 }
 
-finwr_attach <- function(dir = NULL) {
-  if (is.null(dir)) dir <- finwr_dir()
+load_datasets <- function(dir = NULL) {
+  if (is.null(dir)) dir <- datasets_dir()
   files <- list.files(dir, pattern = "\\.csv(\\.gz)?$")
   files <- files[!startsWith(files, "_")]
   for (f in files) {
@@ -39,4 +38,4 @@ finwr_attach <- function(dir = NULL) {
   invisible(files)
 }
 
-finwr_attach()
+load_datasets()

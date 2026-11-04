@@ -13,13 +13,14 @@ ls()
 ```
 
 ```text
- [1] "abret"        "ashr"         "divcurve"     "drawdown"     "excess"
- [6] "fin"          "finwr_attach" "finwr_dir"    "finwr_load"   "idxret"
-[11] "indcnt"       "indday"       "indret"       "mlevent"      "mlfin"
-[16] "mlpanel"      "pair2"        "px1"          "scale"        "vol3"
+ [1] "abret"         "ashr"          "datasets_dir"  "divcurve"
+ [5] "drawdown"      "excess"        "fin"           "idxret"
+ [9] "indcnt"        "indday"        "indret"        "load_dataset"
+[13] "load_datasets" "mlevent"       "mlfin"         "mlpanel"
+[17] "pair2"         "px1"           "scale"         "vol3"
 ```
 
-注意里面除了数据集，还有 `finwr_attach` 这类函数——它们是载入脚本定义的。`objects()` 与 `ls()` 等价。
+注意里面除了数据集，还有 `load_datasets` 这类函数——它们是载入脚本定义的。`objects()` 与 `ls()` 等价。
 
 `ls(pattern=)` 可以筛：
 

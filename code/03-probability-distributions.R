@@ -1,7 +1,7 @@
 # 《量化投资的统计学导论》第 3 章 概率与分布 —— 示例代码
 # 运行: Rscript code/03-probability-distributions.R
 
-source("data/finwr.R")
+source("data/load_datasets.R")
 
 # 3.1 随机抽样 ----
 

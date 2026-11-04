@@ -5,7 +5,7 @@
 
 root <- Sys.getenv("BOOK_ROOT", unset = ".")
 if (!dir.exists(file.path(root, "data"))) root <- "."
-source(file.path(root, "data", "finwr.R"))
+source(file.path(root, "data", "load_datasets.R"))
 suppressMessages(library(survival))
 
 fig_dir <- file.path(root, "media", "fig")

@@ -1,7 +1,7 @@
 # 《量化投资的统计学导论》第 16 章 非线性曲线拟合 —— 示例代码
 # 运行: Rscript code/16-nonlinear.R
 
-source("data/finwr.R")
+source("data/load_datasets.R")
 cairo_pdf(file.path(tempdir(), "ch16.pdf"), width = 9, height = 6,
           family = "PingFang SC")
 on.exit(dev.off(), add = TRUE)

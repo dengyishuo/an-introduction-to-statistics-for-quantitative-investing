@@ -1,8 +1,8 @@
 # 《量化投资的统计学导论》第 1 章 基础 —— 示例代码
-# 依赖: an-introduction-to-statistics-for-quantitative-investing/data/finwr.R（xquant-db 真实行情推导的数据集）
+# 依赖: an-introduction-to-statistics-for-quantitative-investing/data/load_datasets.R（xquant-db 真实行情推导的数据集）
 # 运行: cd an-introduction-to-statistics-for-quantitative-investing && Rscript code/01-basics.R
 
-source("data/finwr.R")
+source("data/load_datasets.R")
 
 # 1.1 第一步 ----
 

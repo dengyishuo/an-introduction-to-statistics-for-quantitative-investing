@@ -13,7 +13,7 @@
 只要照着书上的样子输入，所有例子都能运行。先把数据集载入当前会话：
 
 ```r
-source("an-introduction-to-statistics-for-quantitative-investing/data/finwr.R")
+source("an-introduction-to-statistics-for-quantitative-investing/data/load_datasets.R")
 ```
 
 这条命令会把本书用到的全部数据集读进来，之后可以直接按名字使用（`abret`、`px1`、`ashr` 等）。此阶段不必理解它做了什么，第 2 章会讲。

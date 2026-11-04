@@ -1,7 +1,7 @@
 # 《量化投资的统计学导论》第 10 章 高级数据处理 —— 示例代码
 # 运行: Rscript code/10-data-handling.R
 
-source("data/finwr.R")
+source("data/load_datasets.R")
 
 # 10.1 变量重编码 ----
 

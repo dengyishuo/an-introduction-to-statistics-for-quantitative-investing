@@ -1,7 +1,7 @@
 # 《量化投资的统计学导论》第 13 章 逻辑回归 —— 示例代码
 # 运行: Rscript code/13-logistic.R
 
-source("data/finwr.R")
+source("data/load_datasets.R")
 cairo_pdf(file.path(tempdir(), "ch13.pdf"), width = 9, height = 6,
           family = "PingFang SC")
 on.exit(dev.off(), add = TRUE)

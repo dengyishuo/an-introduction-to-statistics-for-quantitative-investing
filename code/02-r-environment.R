@@ -2,7 +2,7 @@
 # 运行: cd an-introduction-to-statistics-for-quantitative-investing
 #       Rscript code/02-r-environment.R
 
-source("data/finwr.R")
+source("data/load_datasets.R")
 
 # 图形中文显示：普通 pdf 设备不支持中文字体，改用 cairo_pdf
 cairo_pdf(file.path(tempdir(), "ch02.pdf"), width = 9, height = 6,

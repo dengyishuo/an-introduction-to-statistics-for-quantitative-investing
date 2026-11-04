@@ -43,7 +43,7 @@
 R 4.6，无需额外安装本书的数据包——数据集是 CSV，载入只需一行：
 
 ```r
-source("an-introduction-to-statistics-for-quantitative-investing/data/finwr.R")
+source("an-introduction-to-statistics-for-quantitative-investing/data/load_datasets.R")
 ```
 
 ---

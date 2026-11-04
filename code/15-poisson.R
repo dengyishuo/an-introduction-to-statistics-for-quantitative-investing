@@ -1,7 +1,7 @@
 # 《量化投资的统计学导论》第 15 章 率与泊松回归 —— 示例代码
 # 运行: Rscript code/15-poisson.R
 
-source("data/finwr.R")
+source("data/load_datasets.R")
 cairo_pdf(file.path(tempdir(), "ch15.pdf"), width = 9, height = 6,
           family = "PingFang SC")
 on.exit(dev.off(), add = TRUE)

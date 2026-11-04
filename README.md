@@ -11,7 +11,7 @@ an-introduction-to-statistics-for-quantitative-investing/
 ├── draft/            # 中文书稿（书名页 + 16 章）
 ├── code/             # 各章 R 脚本，可独立运行
 ├── data/
-│   ├── finwr.R       # 数据集载入脚本，source 后直接用 abret、ashr 等
+│   ├── load_datasets.R  # 数据集载入脚本，source 后直接用 abret、ashr 等
 │   └── csv/          # 数据快照（CSV / CSV.GZ）
 ├── media/fig/        # R 生成插图（非截图）
 ├── script/           # 数据集构建与插图生成脚本
@@ -30,7 +30,7 @@ an-introduction-to-statistics-for-quantitative-investing/
 仓库已包含书稿使用的全部 CSV / CSV.GZ 快照，位于 `data/csv/`，无需连接外部数据源。加载方式：
 
 ```r
-source("data/finwr.R")
+source("data/load_datasets.R")
 # 之后可直接使用 abret、ashr、indret 等数据集
 ```
 

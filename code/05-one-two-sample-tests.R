@@ -1,7 +1,7 @@
 # 《量化投资的统计学导论》第 5 章 单样本与双样本检验 —— 示例代码
 # 运行: Rscript code/05-one-two-sample-tests.R
 
-source("data/finwr.R")
+source("data/load_datasets.R")
 
 # 5.1 单样本 t 检验 ----
 

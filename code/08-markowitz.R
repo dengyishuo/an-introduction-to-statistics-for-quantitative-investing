@@ -1,9 +1,9 @@
 # 《量化投资的统计学导论》第 8 章 均值—方差组合优化 —— 示例代码
-# 依赖: data/finwr.R（xquant-db 真实行情）、quadprog
+# 依赖: data/load_datasets.R（xquant-db 真实行情）、quadprog
 # 运行: cd an-introduction-to-statistics-for-quantitative-investing
 #       Rscript code/08-markowitz.R
 
-source("data/finwr.R")
+source("data/load_datasets.R")
 suppressMessages(library(quadprog))
 
 RF <- 0.015   # 无风险利率（年化），参数假设，非数据

@@ -1,7 +1,7 @@
 # 《量化投资的统计学导论》第 4 章 描述统计 —— 示例代码
 # 运行: Rscript code/04-descriptive-statistics.R
 
-source("data/finwr.R")
+source("data/load_datasets.R")
 cairo_pdf(file.path(tempdir(), "ch04.pdf"), width = 9, height = 6,
           family = "PingFang SC")
 on.exit(dev.off(), add = TRUE)

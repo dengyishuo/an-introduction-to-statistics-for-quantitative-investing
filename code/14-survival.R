@@ -1,7 +1,7 @@
 # 《量化投资的统计学导论》第 14 章 生存分析 —— 示例代码
 # 运行: Rscript code/14-survival.R
 
-source("data/finwr.R")
+source("data/load_datasets.R")
 suppressMessages(library(survival))
 cairo_pdf(file.path(tempdir(), "ch14.pdf"), width = 9, height = 6,
           family = "PingFang SC")
