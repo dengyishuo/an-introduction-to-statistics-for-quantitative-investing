@@ -25,21 +25,16 @@ an-introduction-to-statistics-for-quantitative-investing/
 
 目录名用英文书名的连字符形式，与书名一致。书稿正文、文件头注释、数据集文档统一使用上述名称。
 
-## 数据来源
+## 数据快照
 
-全部来自本地 `xquant-db` 数据工程，路径通过 `XQUANT_DB` 环境变量指定：
+仓库已包含书稿使用的全部 CSV / CSV.GZ 快照，位于 `data/csv/`，无需连接外部数据源。加载方式：
 
-| 源文件 | 内容 | 规模 |
-|---|---|---|
-| `data/raw-data/leading_raw_data.csv` | 个股日行情 OHLC + 复权价 + 成交量 | 96 只 × 570 交易日 |
-| `data/raw-data/industry_raw_data.csv` | 行业 ETF 日行情 | 20 只 × 570 日 |
-| `data/raw-data/china_index_raw_data.csv` | 宽基 ETF 日行情 | 11 只 × 570 日 |
-| `data/financial_2026/indicators/` | 全市场财务指标（141 字段） | 5533 家 × 2 期 |
-| `data/universe/` | 标的清单 | 100 / 20 / 11 |
+```r
+source("data/finwr.R")
+# 之后可直接使用 abret、ashr、indret 等数据集
+```
 
-样本期：**2024-01-03 至 2026-05-15，569 个交易日**。财务指标取 2026Q2 报告期。
-
-源数据的权威含义以 `xquant-db` 的 `readme.md` 与 `mysql_import_summary.json` 为准，本目录不复制其口径定义。
+行情样本期：**2024-01-03 至 2026-05-15，569 个交易日**；财务指标取 2026Q2 报告期。
 
 ## 数据集清单
 
@@ -60,21 +55,13 @@ an-introduction-to-statistics-for-quantitative-investing/
 
 ## 数据清洗规则（可复现）
 
-构建脚本：`script/02_build_datasets.R`
-
-```bash
-cd an-introduction-to-statistics-for-quantitative-investing
-BOOK_ROOT=. XQUANT_DB=/path/to/xquant-db \
-  Rscript script/02_build_datasets.R
-```
-
-三条清洗规则，均已写入脚本并可由快照核验：
+三条清洗规则均已落实到 `data/csv/` 快照：
 
 **1. 整行去重。** 个股行情中 `002129.SZ`、`002594.SZ`、`300274.SZ`、`601012.SS` 四只标的每个交易日出现两次（整行完全重复），按「日期 + 代码」去重，共删除 2280 行。去重后 96 × 570 = 54720 行，与标的数×交易日数严格吻合。
 
 **2. 脏值剔除。** 部分标的出现单日 ±69.7% 的跳变（如 `510310.SS` 在 2024-09-18、09-20、09-23），远超 A 股涨跌停限制。规则：单日对数收益绝对值 > 25% 视为源数据错误，整行剔除（`MAX_DAILY_MOVE = 0.25`）。
 
-**3. 公司名校正。** 源行情文件与 `universe/leading.csv` 的 `name` 列共用同一错误来源，96 只个股中仅 20 只名称与 `companies.csv` 一致。以**证券代码**为准，价格量级与公开信息双重核验后校正：
+**3. 公司名校正。** 原始行情清单的 `name` 列存在错误，96 只个股中仅 20 只名称与公司档案一致。以**证券代码**为准，价格量级与公开信息双重核验后校正：
 
 | 代码 | 源名称（错） | 校正为 | 核验依据 |
 |---|---|---|---|
@@ -134,8 +121,8 @@ BOOK_ROOT=. XQUANT_DB=/path/to/xquant-db \
 
 | 脚本 | 作用 |
 |---|---|
-| `script/02_build_datasets.R` | 从 xquant-db 构建 9 个行情/财务数据集 |
-| `script/05_build_mlpanel.R` | 从 MySQL 拉取全市场面板，构建 mlpanel 与 mlfin |
+| `script/02_build_datasets.R` | 从原始行情与财务快照构建 9 个行情/财务数据集 |
+| `script/05_build_mlpanel.R` | 构建 mlpanel 与 mlfin 面板 |
 | `script/07_build_extra.R` | 构建 mlevent、drawdown、indcnt、scale、divcurve |
 | `script/03_fig_ch01.R` | 第 1 章插图 |
 | `script/04_fig_ch08.R` | 第 8 章插图 |
