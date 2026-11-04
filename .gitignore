@@ -1,0 +1,24 @@
+# Local reference materials are not published
+reference/
+
+# WorkBuddy project data
+.workbuddy/
+
+# macOS
+.DS_Store
+
+# R session files
+.Rhistory
+.RData
+.Ruserdata
+.Rproj.user/
+
+# Local credentials and environment configuration
+.Renviron
+.env
+.env.*
+!.env.example
+
+# Temporary outputs
+*.log
+*.tmp
